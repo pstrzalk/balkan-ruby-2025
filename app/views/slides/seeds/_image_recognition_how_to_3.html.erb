@@ -1,0 +1,19 @@
+<%= render partial: '/parts/code/ruby',
+           locals: { contents: '
+def get_embedding(phrase)
+  response = OpenAIClient.embeddings(parameters: {
+    model: "text-embedding-3-large",
+    input: phrase
+  })
+  response.dig("data", 0, "embedding")
+end
+
+embedding = get_embedding("A dog eating a shoe")
+embedding.count
+=> 3072
+
+embedding[0..5]
+=> [-0.04381369, -0.03062029, 0.0011734515, -0.000439478, 0.014157535, -0.008350988]
+
+
+' } %>
